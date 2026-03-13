@@ -1,0 +1,82 @@
+[2026-03-11T00:10:33.988+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-03-11T00:10:34.005+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pokemon_ecs_pipeline.fetch_pokemon_to_s3 manual__2026-03-11T00:10:33.513622+00:00 [queued]>
+[2026-03-11T00:10:34.010+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pokemon_ecs_pipeline.fetch_pokemon_to_s3 manual__2026-03-11T00:10:33.513622+00:00 [queued]>
+[2026-03-11T00:10:34.011+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2026-03-11T00:10:34.020+0000] {taskinstance.py:2330} INFO - Executing <Task(EcsRunTaskOperator): fetch_pokemon_to_s3> on 2026-03-11 00:10:33.513622+00:00
+[2026-03-11T00:10:34.027+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=353) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-11T00:10:34.028+0000] {standard_task_runner.py:63} INFO - Started process 354 to run task
+[2026-03-11T00:10:34.028+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'pokemon_ecs_pipeline', 'fetch_pokemon_to_s3', 'manual__2026-03-11T00:10:33.513622+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/pokemon_dag.py', '--cfg-path', '/tmp/tmpmm6v8qqv']
+[2026-03-11T00:10:34.030+0000] {standard_task_runner.py:91} INFO - Job 4: Subtask fetch_pokemon_to_s3
+[2026-03-11T00:10:34.073+0000] {task_command.py:426} INFO - Running <TaskInstance: pokemon_ecs_pipeline.fetch_pokemon_to_s3 manual__2026-03-11T00:10:33.513622+00:00 [running]> on host 476df021237d
+[2026-03-11T00:10:34.134+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='tank' AIRFLOW_CTX_DAG_ID='pokemon_ecs_pipeline' AIRFLOW_CTX_TASK_ID='fetch_pokemon_to_s3' AIRFLOW_CTX_EXECUTION_DATE='2026-03-11T00:10:33.513622+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-11T00:10:33.513622+00:00'
+[2026-03-11T00:10:34.135+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-03-11T00:10:34.145+0000] {ecs.py:522} INFO - Running ECS Task - Task definition: pokemon-pipeline - on cluster pokemon-pipeline-cluster
+[2026-03-11T00:10:34.145+0000] {ecs.py:525} INFO - EcsOperator overrides: {}
+[2026-03-11T00:10:34.153+0000] {base_aws.py:582} WARNING - Unable to find AWS Connection ID 'aws_default', switching to empty.
+[2026-03-11T00:10:34.154+0000] {base_aws.py:162} INFO - No connection ID provided. Fallback on boto3 credential strategy (region_name=None). See: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html
+[2026-03-11T00:10:34.286+0000] {credentials.py:1278} INFO - Found credentials in shared credentials file: ~/.aws/credentials
+[2026-03-11T00:10:35.376+0000] {ecs.py:638} INFO - ECS Task started: {'tasks': [{'attachments': [{'id': '04eceb5c-98ad-4c3c-b46a-7db6ed8ede1b', 'type': 'ElasticNetworkInterface', 'status': 'PRECREATED', 'details': [{'name': 'subnetId', 'value': 'subnet-051ddc87ff8f49aef'}]}], 'attributes': [{'name': 'ecs.cpu-architecture', 'value': 'arm64'}], 'availabilityZone': 'us-east-1f', 'clusterArn': 'arn:aws:ecs:us-east-1:134084020574:cluster/pokemon-pipeline-cluster', 'containers': [{'containerArn': 'arn:aws:ecs:us-east-1:134084020574:container/pokemon-pipeline-cluster/3a70399ca45e4507acfee28109ba86b5/ad19f7d8-5b19-49d1-95ba-7bda3c90fbbc', 'taskArn': 'arn:aws:ecs:us-east-1:134084020574:task/pokemon-pipeline-cluster/3a70399ca45e4507acfee28109ba86b5', 'name': 'pokemon-pipeline', 'image': '134084020574.dkr.ecr.us-east-1.amazonaws.com/pokemon-pipeline:latest', 'lastStatus': 'PENDING', 'networkInterfaces': [], 'cpu': '0'}], 'cpu': '256', 'createdAt': datetime.datetime(2026, 3, 11, 0, 10, 35, 302000, tzinfo=tzlocal()), 'desiredStatus': 'RUNNING', 'enableExecuteCommand': False, 'group': 'family:pokemon-pipeline', 'lastStatus': 'PROVISIONING', 'launchType': 'FARGATE', 'memory': '512', 'overrides': {'containerOverrides': [{'name': 'pokemon-pipeline'}], 'inferenceAcceleratorOverrides': []}, 'platformVersion': '1.4.0', 'platformFamily': 'Linux', 'startedBy': 'tank', 'tags': [], 'taskArn': 'arn:aws:ecs:us-east-1:134084020574:task/pokemon-pipeline-cluster/3a70399ca45e4507acfee28109ba86b5', 'taskDefinitionArn': 'arn:aws:ecs:us-east-1:134084020574:task-definition/pokemon-pipeline:1', 'version': 1, 'ephemeralStorage': {'sizeInGiB': 20}}], 'failures': [], 'ResponseMetadata': {'RequestId': '6182e988-e3ec-44ad-bf84-f1b5296826d7', 'HTTPStatusCode': 200, 'HTTPHeaders': {'x-amzn-requestid': '6182e988-e3ec-44ad-bf84-f1b5296826d7', 'content-type': 'application/x-amz-json-1.1', 'content-length': '1503', 'date': 'Wed, 11 Mar 2026 00:10:35 GMT'}, 'RetryAttempts': 0}}
+[2026-03-11T00:10:35.377+0000] {ecs.py:641} INFO - ECS task ID is: 3a70399ca45e4507acfee28109ba86b5
+[2026-03-11T00:10:35.397+0000] {ecs.py:564} INFO - Starting ECS Task Log Fetcher
+[2026-03-11T00:11:05.413+0000] {base_aws.py:582} WARNING - Unable to find AWS Connection ID 'aws_default', switching to empty.
+[2026-03-11T00:11:05.415+0000] {base_aws.py:162} INFO - No connection ID provided. Fallback on boto3 credential strategy (region_name=None). See: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html
+[2026-03-11T00:11:05.431+0000] {credentials.py:1278} INFO - Found credentials in shared credentials file: ~/.aws/credentials
+[2026-03-11T00:12:07.128+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Retrieved 50 records from the API
+[2026-03-11T00:12:07.128+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched bulbasaur
+[2026-03-11T00:12:07.129+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched ivysaur
+[2026-03-11T00:12:07.129+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched venusaur
+[2026-03-11T00:12:07.129+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched charmander
+[2026-03-11T00:12:07.129+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched charmeleon
+[2026-03-11T00:12:07.129+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched charizard
+[2026-03-11T00:12:07.129+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched squirtle
+[2026-03-11T00:12:07.129+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched wartortle
+[2026-03-11T00:12:07.130+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched blastoise
+[2026-03-11T00:12:07.130+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched caterpie
+[2026-03-11T00:12:07.130+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched metapod
+[2026-03-11T00:12:07.130+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched butterfree
+[2026-03-11T00:12:07.130+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched weedle
+[2026-03-11T00:12:07.130+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched kakuna
+[2026-03-11T00:12:07.130+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched beedrill
+[2026-03-11T00:12:07.130+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched pidgey
+[2026-03-11T00:12:07.130+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched pidgeotto
+[2026-03-11T00:12:07.130+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched pidgeot
+[2026-03-11T00:12:07.130+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched rattata
+[2026-03-11T00:12:07.130+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched raticate
+[2026-03-11T00:12:07.131+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched spearow
+[2026-03-11T00:12:07.131+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched fearow
+[2026-03-11T00:12:07.131+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched ekans
+[2026-03-11T00:12:07.131+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched arbok
+[2026-03-11T00:12:07.131+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched pikachu
+[2026-03-11T00:12:07.131+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched raichu
+[2026-03-11T00:12:07.131+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched sandshrew
+[2026-03-11T00:12:07.132+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched sandslash
+[2026-03-11T00:12:07.132+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched nidoran-f
+[2026-03-11T00:12:07.132+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched nidorina
+[2026-03-11T00:12:07.132+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched nidoqueen
+[2026-03-11T00:12:07.132+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched nidoran-m
+[2026-03-11T00:12:07.132+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched nidorino
+[2026-03-11T00:12:07.132+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched nidoking
+[2026-03-11T00:12:07.132+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched clefairy
+[2026-03-11T00:12:07.133+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched clefable
+[2026-03-11T00:12:07.133+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched vulpix
+[2026-03-11T00:12:07.133+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched ninetales
+[2026-03-11T00:12:07.133+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched jigglypuff
+[2026-03-11T00:12:07.133+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched wigglytuff
+[2026-03-11T00:12:07.133+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched zubat
+[2026-03-11T00:12:07.133+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched golbat
+[2026-03-11T00:12:07.133+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched oddish
+[2026-03-11T00:12:07.134+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched gloom
+[2026-03-11T00:12:07.134+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched vileplume
+[2026-03-11T00:12:07.134+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched paras
+[2026-03-11T00:12:07.134+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched parasect
+[2026-03-11T00:12:07.134+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched venonat
+[2026-03-11T00:12:07.134+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched venomoth
+[2026-03-11T00:12:07.134+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Fetched diglett
+[2026-03-11T00:12:07.134+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] 50 records fetched from the API
+[2026-03-11T00:12:07.135+0000] {task_log_fetcher.py:63} INFO - [2026-03-11 00:11:49,931] Loaded to S3 successfully 💥💥💥
+[2026-03-11T00:12:37.651+0000] {ecs.py:697} INFO - ECS Task stopped, check status: {'tasks': [{'attachments': [{'id': '04eceb5c-98ad-4c3c-b46a-7db6ed8ede1b', 'type': 'ElasticNetworkInterface', 'status': 'DELETED', 'details': [{'name': 'subnetId', 'value': 'subnet-051ddc87ff8f49aef'}, {'name': 'networkInterfaceId', 'value': 'eni-0fff5d7e0b945f4d3'}, {'name': 'macAddress', 'value': '16:ff:ef:74:d7:49'}, {'name': 'privateDnsName', 'value': 'ip-172-31-68-104.ec2.internal'}, {'name': 'privateIPv4Address', 'value': '172.31.68.104'}]}], 'attributes': [{'name': 'ecs.cpu-architecture', 'value': 'arm64'}], 'availabilityZone': 'us-east-1f', 'clusterArn': 'arn:aws:ecs:us-east-1:134084020574:cluster/pokemon-pipeline-cluster', 'connectivity': 'CONNECTED', 'connectivityAt': datetime.datetime(2026, 3, 11, 0, 10, 38, 910000, tzinfo=tzlocal()), 'containers': [{'containerArn': 'arn:aws:ecs:us-east-1:134084020574:container/pokemon-pipeline-cluster/3a70399ca45e4507acfee28109ba86b5/ad19f7d8-5b19-49d1-95ba-7bda3c90fbbc', 'taskArn': 'arn:aws:ecs:us-east-1:134084020574:task/pokemon-pipeline-cluster/3a70399ca45e4507acfee28109ba86b5', 'name': 'pokemon-pipeline', 'image': '134084020574.dkr.ecr.us-east-1.amazonaws.com/pokemon-pipeline:latest', 'imageDigest': 'sha256:1effe27d16ec8370a4e519ce04db93fab4f8209470c8fb40c27de566a76fdf6a', 'runtimeId': '3a70399ca45e4507acfee28109ba86b5-3475527031', 'lastStatus': 'STOPPED', 'exitCode': 0, 'networkBindings': [], 'networkInterfaces': [{'attachmentId': '04eceb5c-98ad-4c3c-b46a-7db6ed8ede1b', 'privateIpv4Address': '172.31.68.104'}], 'healthStatus': 'UNKNOWN', 'cpu': '0'}], 'cpu': '256', 'createdAt': datetime.datetime(2026, 3, 11, 0, 10, 35, 302000, tzinfo=tzlocal()), 'desiredStatus': 'STOPPED', 'enableExecuteCommand': False, 'executionStoppedAt': datetime.datetime(2026, 3, 11, 0, 11, 50, 764000, tzinfo=tzlocal()), 'group': 'family:pokemon-pipeline', 'healthStatus': 'UNKNOWN', 'lastStatus': 'STOPPED', 'launchType': 'FARGATE', 'memory': '512', 'overrides': {'containerOverrides': [{'name': 'pokemon-pipeline'}], 'inferenceAcceleratorOverrides': []}, 'platformVersion': '1.4.0', 'platformFamily': 'Linux', 'pullStartedAt': datetime.datetime(2026, 3, 11, 0, 10, 46, 351000, tzinfo=tzlocal()), 'pullStoppedAt': datetime.datetime(2026, 3, 11, 0, 10, 52, 547000, tzinfo=tzlocal()), 'startedAt': datetime.datetime(2026, 3, 11, 0, 10, 53, 257000, tzinfo=tzlocal()), 'startedBy': 'tank', 'stopCode': 'EssentialContainerExited', 'stoppedAt': datetime.datetime(2026, 3, 11, 0, 12, 15, 337000, tzinfo=tzlocal()), 'stoppedReason': 'Essential container in task exited', 'stoppingAt': datetime.datetime(2026, 3, 11, 0, 12, 0, 807000, tzinfo=tzlocal()), 'tags': [], 'taskArn': 'arn:aws:ecs:us-east-1:134084020574:task/pokemon-pipeline-cluster/3a70399ca45e4507acfee28109ba86b5', 'taskDefinitionArn': 'arn:aws:ecs:us-east-1:134084020574:task-definition/pokemon-pipeline:1', 'version': 5, 'ephemeralStorage': {'sizeInGiB': 20}}], 'failures': [], 'ResponseMetadata': {'RequestId': 'e37b9ab1-e642-4ac2-b4d4-6e31dd4beff5', 'HTTPStatusCode': 200, 'HTTPHeaders': {'x-amzn-requestid': 'e37b9ab1-e642-4ac2-b4d4-6e31dd4beff5', 'content-type': 'application/x-amz-json-1.1', 'content-length': '2392', 'date': 'Wed, 11 Mar 2026 00:12:37 GMT'}, 'RetryAttempts': 0}}
+[2026-03-11T00:12:37.703+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-03-11T00:12:37.735+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=pokemon_ecs_pipeline, task_id=fetch_pokemon_to_s3, run_id=manual__2026-03-11T00:10:33.513622+00:00, execution_date=20260311T001033, start_date=20260311T001034, end_date=20260311T001237
+[2026-03-11T00:12:37.773+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2026-03-11T00:12:37.789+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-03-11T00:12:37.790+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

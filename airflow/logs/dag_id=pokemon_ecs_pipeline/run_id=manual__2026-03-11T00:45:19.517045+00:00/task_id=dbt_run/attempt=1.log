@@ -1,0 +1,42 @@
+[2026-03-11T00:48:57.854+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-03-11T00:48:57.868+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pokemon_ecs_pipeline.dbt_run manual__2026-03-11T00:45:19.517045+00:00 [queued]>
+[2026-03-11T00:48:57.874+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pokemon_ecs_pipeline.dbt_run manual__2026-03-11T00:45:19.517045+00:00 [queued]>
+[2026-03-11T00:48:57.874+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2026-03-11T00:48:57.882+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_run> on 2026-03-11 00:45:19.517045+00:00
+[2026-03-11T00:48:57.888+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=406) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-11T00:48:57.888+0000] {standard_task_runner.py:63} INFO - Started process 407 to run task
+[2026-03-11T00:48:57.888+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'pokemon_ecs_pipeline', 'dbt_run', 'manual__2026-03-11T00:45:19.517045+00:00', '--job-id', '10', '--raw', '--subdir', 'DAGS_FOLDER/pokemon_dag.py', '--cfg-path', '/tmp/tmpshb6mpez']
+[2026-03-11T00:48:57.889+0000] {standard_task_runner.py:91} INFO - Job 10: Subtask dbt_run
+[2026-03-11T00:48:57.922+0000] {task_command.py:426} INFO - Running <TaskInstance: pokemon_ecs_pipeline.dbt_run manual__2026-03-11T00:45:19.517045+00:00 [running]> on host 0e91f4aa073d
+[2026-03-11T00:48:57.977+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='tank' AIRFLOW_CTX_DAG_ID='pokemon_ecs_pipeline' AIRFLOW_CTX_TASK_ID='dbt_run' AIRFLOW_CTX_EXECUTION_DATE='2026-03-11T00:45:19.517045+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-11T00:45:19.517045+00:00'
+[2026-03-11T00:48:57.978+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-03-11T00:48:57.987+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-03-11T00:48:57.988+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/dbt && dbt run']
+[2026-03-11T00:48:57.994+0000] {subprocess.py:86} INFO - Output:
+[2026-03-11T00:48:59.394+0000] {subprocess.py:93} INFO - [0m00:48:59  Running with dbt=1.11.7
+[2026-03-11T00:48:59.542+0000] {subprocess.py:93} INFO - [0m00:48:59  Registered adapter: postgres=1.10.0
+[2026-03-11T00:48:59.675+0000] {subprocess.py:93} INFO - [0m00:48:59  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+[2026-03-11T00:48:59.675+0000] {subprocess.py:93} INFO - There are 1 unused configuration paths:
+[2026-03-11T00:48:59.675+0000] {subprocess.py:93} INFO - - models.pokemon_dbt.example
+[2026-03-11T00:48:59.776+0000] {subprocess.py:93} INFO - [0m00:48:59  Found 3 models, 3 data tests, 1 source, 465 macros
+[2026-03-11T00:48:59.778+0000] {subprocess.py:93} INFO - [0m00:48:59
+[2026-03-11T00:48:59.778+0000] {subprocess.py:93} INFO - [0m00:48:59  Concurrency: 1 threads (target='dev')
+[2026-03-11T00:48:59.778+0000] {subprocess.py:93} INFO - [0m00:48:59
+[2026-03-11T00:48:59.889+0000] {subprocess.py:93} INFO - [0m00:48:59  1 of 3 START sql view model staging.stg_pokemon_stats .......................... [RUN]
+[2026-03-11T00:48:59.964+0000] {subprocess.py:93} INFO - [0m00:48:59  1 of 3 OK created sql view model staging.stg_pokemon_stats ..................... [[32mCREATE VIEW[0m in 0.07s]
+[2026-03-11T00:48:59.966+0000] {subprocess.py:93} INFO - [0m00:48:59  2 of 3 START sql table model marts.mart_pokemon_primary_summary ................ [RUN]
+[2026-03-11T00:49:00.019+0000] {subprocess.py:93} INFO - [0m00:49:00  2 of 3 OK created sql table model marts.mart_pokemon_primary_summary ........... [[32mSELECT 15[0m in 0.05s]
+[2026-03-11T00:49:00.021+0000] {subprocess.py:93} INFO - [0m00:49:00  3 of 3 START sql table model marts.mart_pokemon_secondary_summary .............. [RUN]
+[2026-03-11T00:49:00.056+0000] {subprocess.py:93} INFO - [0m00:49:00  3 of 3 OK created sql table model marts.mart_pokemon_secondary_summary ......... [[32mSELECT 12[0m in 0.03s]
+[2026-03-11T00:49:00.068+0000] {subprocess.py:93} INFO - [0m00:49:00
+[2026-03-11T00:49:00.068+0000] {subprocess.py:93} INFO - [0m00:49:00  Finished running 2 table models, 1 view model in 0 hours 0 minutes and 0.29 seconds (0.29s).
+[2026-03-11T00:49:00.095+0000] {subprocess.py:93} INFO - [0m00:49:00
+[2026-03-11T00:49:00.095+0000] {subprocess.py:93} INFO - [0m00:49:00  [32mCompleted successfully[0m
+[2026-03-11T00:49:00.096+0000] {subprocess.py:93} INFO - [0m00:49:00
+[2026-03-11T00:49:00.096+0000] {subprocess.py:93} INFO - [0m00:49:00  Done. PASS=3 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=3
+[2026-03-11T00:49:00.539+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-03-11T00:49:00.540+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-03-11T00:49:00.557+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=pokemon_ecs_pipeline, task_id=dbt_run, run_id=manual__2026-03-11T00:45:19.517045+00:00, execution_date=20260311T004519, start_date=20260311T004857, end_date=20260311T004900
+[2026-03-11T00:49:00.568+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2026-03-11T00:49:00.580+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-11T00:49:00.581+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

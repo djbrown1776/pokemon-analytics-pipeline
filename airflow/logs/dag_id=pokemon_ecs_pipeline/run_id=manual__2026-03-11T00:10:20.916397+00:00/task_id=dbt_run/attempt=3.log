@@ -1,0 +1,54 @@
+[2026-03-11T00:22:33.874+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-03-11T00:22:33.894+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pokemon_ecs_pipeline.dbt_run manual__2026-03-11T00:10:20.916397+00:00 [queued]>
+[2026-03-11T00:22:33.901+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pokemon_ecs_pipeline.dbt_run manual__2026-03-11T00:10:20.916397+00:00 [queued]>
+[2026-03-11T00:22:33.902+0000] {taskinstance.py:2306} INFO - Starting attempt 3 of 3
+[2026-03-11T00:22:33.917+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_run> on 2026-03-11 00:10:20.916397+00:00
+[2026-03-11T00:22:33.928+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=599) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-11T00:22:33.929+0000] {standard_task_runner.py:63} INFO - Started process 601 to run task
+[2026-03-11T00:22:33.928+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'pokemon_ecs_pipeline', 'dbt_run', 'manual__2026-03-11T00:10:20.916397+00:00', '--job-id', '15', '--raw', '--subdir', 'DAGS_FOLDER/pokemon_dag.py', '--cfg-path', '/tmp/tmpo3dn4fge']
+[2026-03-11T00:22:33.930+0000] {standard_task_runner.py:91} INFO - Job 15: Subtask dbt_run
+[2026-03-11T00:22:33.980+0000] {task_command.py:426} INFO - Running <TaskInstance: pokemon_ecs_pipeline.dbt_run manual__2026-03-11T00:10:20.916397+00:00 [running]> on host 476df021237d
+[2026-03-11T00:22:34.048+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='tank' AIRFLOW_CTX_DAG_ID='pokemon_ecs_pipeline' AIRFLOW_CTX_TASK_ID='dbt_run' AIRFLOW_CTX_EXECUTION_DATE='2026-03-11T00:10:20.916397+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-11T00:10:20.916397+00:00'
+[2026-03-11T00:22:34.049+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-03-11T00:22:34.063+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-03-11T00:22:34.064+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/dbt && dbt run']
+[2026-03-11T00:22:34.072+0000] {subprocess.py:86} INFO - Output:
+[2026-03-11T00:22:36.116+0000] {subprocess.py:93} INFO - [0m00:22:36  Running with dbt=1.11.7
+[2026-03-11T00:22:36.296+0000] {subprocess.py:93} INFO - [0m00:22:36  Registered adapter: postgres=1.10.0
+[2026-03-11T00:22:36.459+0000] {subprocess.py:93} INFO - [0m00:22:36  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+[2026-03-11T00:22:36.459+0000] {subprocess.py:93} INFO - There are 1 unused configuration paths:
+[2026-03-11T00:22:36.460+0000] {subprocess.py:93} INFO - - models.pokemon_dbt.example
+[2026-03-11T00:22:36.567+0000] {subprocess.py:93} INFO - [0m00:22:36  Found 3 models, 3 data tests, 1 source, 465 macros
+[2026-03-11T00:22:36.569+0000] {subprocess.py:93} INFO - [0m00:22:36
+[2026-03-11T00:22:36.570+0000] {subprocess.py:93} INFO - [0m00:22:36  Concurrency: 1 threads (target='dev')
+[2026-03-11T00:22:36.570+0000] {subprocess.py:93} INFO - [0m00:22:36
+[2026-03-11T00:22:36.614+0000] {subprocess.py:93} INFO - [0m00:22:36
+[2026-03-11T00:22:36.614+0000] {subprocess.py:93} INFO - [0m00:22:36  Finished running  in 0 hours 0 minutes and 0.04 seconds (0.04s).
+[2026-03-11T00:22:36.615+0000] {subprocess.py:93} INFO - [0m00:22:36  Encountered an error:
+[2026-03-11T00:22:36.615+0000] {subprocess.py:93} INFO - Database Error
+[2026-03-11T00:22:36.615+0000] {subprocess.py:93} INFO -   connection to server at "localhost" (::1), port 5432 failed: Connection refused
+[2026-03-11T00:22:36.616+0000] {subprocess.py:93} INFO -   	Is the server running on that host and accepting TCP/IP connections?
+[2026-03-11T00:22:36.616+0000] {subprocess.py:93} INFO -   connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+[2026-03-11T00:22:36.616+0000] {subprocess.py:93} INFO -   	Is the server running on that host and accepting TCP/IP connections?
+[2026-03-11T00:22:36.616+0000] {subprocess.py:93} INFO - 
+[2026-03-11T00:22:37.268+0000] {subprocess.py:97} INFO - Command exited with return code 2
+[2026-03-11T00:22:37.270+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-03-11T00:22:37.291+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 2.
+[2026-03-11T00:22:37.297+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=pokemon_ecs_pipeline, task_id=dbt_run, run_id=manual__2026-03-11T00:10:20.916397+00:00, execution_date=20260311T001020, start_date=20260311T002233, end_date=20260311T002237
+[2026-03-11T00:22:37.313+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 15 for task dbt_run (Bash command failed. The command returned a non-zero exit code 2.; 601)
+[2026-03-11T00:22:37.346+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2026-03-11T00:22:37.388+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-11T00:22:37.389+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
