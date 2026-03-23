@@ -1,1 +1,0 @@
-SELECT * from marts.mart_pokemon_secondary_summary
