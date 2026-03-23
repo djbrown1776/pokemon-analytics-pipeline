@@ -8,6 +8,9 @@ import pyarrow
 
 load_dotenv()
 
+S3_BUCKET = os.getenv('S3_BUCKET')
+assert S3_BUCKET, "S3_BUCKET environment variable is not set"
+
 url = "https://pokeapi.co/api/v2/pokemon/?limit=150"
 
 
@@ -62,7 +65,7 @@ s3 = boto3.client('s3')
 
 parquet_data = df.to_parquet(index=False, engine='pyarrow')
 s3.put_object(
-    Bucket='cloudtank-bronze-09f1',
+    Bucket=S3_BUCKET,
     Key=f"pokemon/pokemon_{pd.Timestamp.now():%Y-%m-%d}.parquet",
     Body=parquet_data,
 )

@@ -6,6 +6,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+S3_BUCKET = os.getenv('S3_BUCKET')
+assert S3_BUCKET, "S3_BUCKET environment variable is not set"
+
 
 def fetch_latest_from_s3(bucket, prefix):
     try:
@@ -49,7 +52,7 @@ def load_to_warehouse(df):
         print(f"Warehouse load failed: {e}")
 
 
-df = fetch_latest_from_s3('cloudtank-bronze-09f1', 'pokemon/')
+df = fetch_latest_from_s3(S3_BUCKET, 'pokemon/')
 
 if df is None:
     print("No data to load")

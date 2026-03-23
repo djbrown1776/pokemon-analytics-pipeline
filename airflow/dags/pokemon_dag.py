@@ -1,13 +1,18 @@
+import os
 from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.providers.amazon.aws.operators.ecs import EcsRunTaskOperator
 from airflow.operators.bash import BashOperator
 
 default_args = {
-    'owner': 'tank',
+    'owner': 'airflow',
     'retries': 2,
     'retry_delay': timedelta(minutes=5)
     }
+
+# Set these in Airflow Variables or environment
+ECS_SUBNETS = os.environ.get('ECS_SUBNETS', '').split(',')
+ECS_SECURITY_GROUP = os.environ.get('ECS_SECURITY_GROUP', '')
 
 with DAG(
     dag_id='pokemon_ecs_pipeline',
@@ -18,7 +23,7 @@ with DAG(
     catchup=False,
     tags=['pokemon', 'ecs', 'pipeline'],
 ) as dag:
-    
+
     fetch_pokemon = EcsRunTaskOperator(
         task_id='fetch_pokemon_to_s3',
         cluster='pokemon-pipeline-cluster',
@@ -27,19 +32,15 @@ with DAG(
         overrides={},
         network_configuration={
             'awsvpcConfiguration': {
-                'subnets': [
-                    'subnet-051ddc87ff8f49aef',
-                    'subnet-0ae2456871f5e54c9',
-                    'subnet-0fc2ec5bceb602fc2',
-                ],
-                'securityGroups': ['sg-08a0269ac418cd3db'],
+                'subnets': ECS_SUBNETS,
+                'securityGroups': [ECS_SECURITY_GROUP],
                 'assignPublicIp': 'ENABLED',
             }
         },
         awslogs_group='/ecs/pokemon-pipeline',
         awslogs_stream_prefix='ecs/pokemon-pipeline',
     )
-    
+
     load_to_warehouse = BashOperator(
         task_id='s3_to_warehouse',
         bash_command='python /opt/airflow/pipeline/s3_to_warehouse.py',
