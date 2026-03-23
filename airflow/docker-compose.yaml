@@ -8,7 +8,7 @@ x-airflow-common: &airflow-common
     AIRFLOW__CORE__FERNET_KEY: ''
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
     AIRFLOW__WEBSERVER__EXPOSE_CONFIG: 'true'
-    DB_URL: postgresql://root:root@host.docker.internal:5432/llamaindex-dev
+    DB_URL: postgresql://root:root@host.docker.internal:5432/pokemon_warehouse
     DBT_HOST: ${DBT_HOST}
   volumes:
     - ./dags:/opt/airflow/dags
